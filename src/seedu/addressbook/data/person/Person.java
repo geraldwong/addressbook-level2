@@ -3,6 +3,8 @@ package seedu.addressbook.data.person;
 import seedu.addressbook.data.tag.UniqueTagList;
 
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a Person in the address book.
@@ -82,6 +84,17 @@ public class Person implements ReadOnlyPerson {
     @Override
     public String toString() {
         return getAsTextShowAll();
+    }
+    
+    @Override
+    public String getPrintableString(Printable... printables){
+    	List<String> listOfStrings = new ArrayList<>();
+    	for(Printable printable : printables) {
+    		String printableString = printable.getPrintableString();
+    		listOfStrings.add(printableString);
+    	}
+    	String finalListOfStrings = String.join(",", listOfStrings);
+    	return finalListOfStrings;
     }
 
 }
